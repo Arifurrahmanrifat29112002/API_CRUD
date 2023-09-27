@@ -25,7 +25,7 @@ use App\Models\Product;
 //Authentication user 
 Route::post('/user/registration',[AuthenticationController::class,'Registration'])->name('registration');
 Route::post('/user/login',[AuthenticationController::class,'Login'])->name('login');
-
+Route::get('/user/logout',[AuthenticationController::class,'logout'])->middleware('auth:sanctum')->name('logout');
 
 //product 
 Route::get('/get/products',[ProdutController::class,'index'])->name('allProducts');
@@ -36,3 +36,4 @@ Route::controller(ProdutController::class)->middleware('auth:sanctum')->group(fu
     Route::put('/edit/product/{product}','update')->name('Product.update');
     Route::delete('/delete/product/{product}','destroy')->name('Product.update');
 });
+

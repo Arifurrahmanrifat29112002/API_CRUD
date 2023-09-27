@@ -60,4 +60,10 @@ class AuthenticationController extends BaseController
             return $this->sendError('Unauthorised',['error' =>"Invalid email or Password"]);
         }
     }
+
+    //Auth::user() logout
+    public function logout(){
+        Auth::user()->tokens()->delete();
+        return $this->sendRespons([],'user logout');
+    }
 }
